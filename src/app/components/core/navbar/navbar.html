@@ -1,0 +1,49 @@
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="logo" routerLink="/">
+      <span class="highlight">Talent</span>Bridge
+    </div>
+
+    <ul class="nav-menu">
+      <li *ngIf="isLoggedIn()">
+        <a routerLink="/jobs" routerLinkActive="active-link">Find Jobs</a>
+      </li>
+
+      <li *ngIf="isLoggedIn() && userRole() === 'recruiter'">
+        <a routerLink="/recruiter/post-job" routerLinkActive="active-link">
+          Post a Job
+        </a>
+      </li>
+    </ul>
+
+    <div class="search-box">
+      <input
+        type="text"
+        #searchInput
+        placeholder="Search jobs, companies..."
+        (keyup.enter)="onSearch(searchInput.value)"
+      />
+    </div>
+
+    <div class="nav-actions">
+      <ng-container *ngIf="!isLoggedIn(); else loggedInUser">
+        <button class="btn-login" routerLink="/auth/login">Login</button>
+        <button class="btn-register" routerLink="/auth/register">Register</button>
+      </ng-container>
+
+      <ng-template #loggedInUser>
+        <div class="profile-section">
+          <div class="avatar-circle">TB</div>
+          <button class="btn-profile" routerLink="/user/profile">
+            My Profile
+          </button>
+          <button class="btn-logout" (click)="toggleLogin()">
+            Logout
+          </button>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+</nav>

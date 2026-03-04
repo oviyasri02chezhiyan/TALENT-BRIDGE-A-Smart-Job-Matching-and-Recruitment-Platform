@@ -1,0 +1,78 @@
+<div class="manage-wrapper">
+
+  <div class="navigation-bar">
+    <button class="btn-back-dark" (click)="goBack()">
+      <span>←</span>
+      Back to Dashboard
+    </button>
+  </div>
+
+  <div class="manage-container">
+
+    <header class="manage-header">
+      <div class="title-area">
+        <h2>Manage Your Listings 🛠️</h2>
+        <p>Edit, close, or delete your current job postings</p>
+      </div>
+
+      <button class="btn-post-new" routerLink="/recruiter/post-job">
+        + Post New Job
+      </button>
+    </header>
+
+    <div class="table-card">
+      <table class="listings-table">
+        <thead>
+          <tr>
+            <th>Job Role</th>
+            <th class="text-center">Applicants</th>
+            <th>Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (job of postedJobs(); track job.id) {
+            <tr class="job-row">
+
+              <td class="role-cell">
+                <div class="job-title">{{ job.title }}</div>
+                <div class="job-loc">📍 {{ job.location }}</div>
+              </td>
+
+              <td class="applicant-cell text-center">
+                <span class="count">{{ job.applicants }}</span>
+                <span class="subtext">Candidates</span>
+              </td>
+
+              <td>
+                <span class="status-badge" [class.active]="job.status === 'Active'" [class.closed]="job.status === 'Closed'">
+                  {{ job.status }}
+                </span>
+              </td>
+
+              <td class="actions-cell">
+                <div class="action-buttons">
+                  <button class="btn-toggle" (click)="toggleStatus(job.id)">
+                    {{ job.status === 'Active' ? 'Close' : 'Re-open' }}
+                  </button>
+
+                  <button class="btn-edit">
+                    ✏️ Edit
+                  </button>
+
+                  <button class="btn-delete" (click)="deleteJob(job.id)">
+                    🗑️ Delete
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>

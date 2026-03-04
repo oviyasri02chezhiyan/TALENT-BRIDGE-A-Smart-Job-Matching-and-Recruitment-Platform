@@ -1,0 +1,231 @@
+:host {
+  --primary: #2563eb;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  display: block;
+}
+
+.profile-page-wrapper {
+  min-height: calc(100vh - 100px);
+  background: var(--bg-gradient);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content-container {
+  width: 100%;
+  max-width: 1000px;
+  animation: slideUp 0.6s ease-out;
+}
+
+.header-card {
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.profile-circle {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: white;
+  position: relative;
+  box-shadow: 0 15px 25px rgba(37, 99, 235, 0.2);
+}
+
+.online-status {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  background: #22c55e;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.role-tag {
+  background: #dbeafe;
+  color: #2563eb;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.edit-btn {
+  margin-left: auto;
+  padding: 12px 28px;
+  border: 2px solid #0f172a;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  background: transparent;
+}
+
+.edit-btn:hover {
+  background: #0f172a;
+  color: white;
+}
+
+.edit-btn.cancel-mode {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 30px;
+}
+
+.form-card,
+.skills-card,
+.resume-promo-card {
+  background: white;
+  border-radius: 30px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 25px;
+  color: #010408;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #01060c;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 15px 20px;
+  background: #f1f5f9;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+
+.save-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.skill-pill {
+  display: inline-block;
+  background: #f1f5f9;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 4px;
+  color: #475569;
+}
+
+.resume-promo-card {
+  background: #59a2c1;
+  color: white;
+  text-align: center;
+}
+
+.resume-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.upload-btn {
+  width: 100%;
+  padding: 15px;
+  background: white;
+  color: #0f172a;
+  border: none;
+  border-radius: 15px;
+  font-weight: 900;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #e2e8f0;
+  transform: scale(1.02);
+}
+
+.file-name {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 850px) {
+  .header-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-btn {
+    margin: 0;
+    width: 100%;
+  }
+}

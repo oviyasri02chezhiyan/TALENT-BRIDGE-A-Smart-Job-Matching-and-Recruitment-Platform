@@ -1,0 +1,86 @@
+<div class="job-post-wrapper">
+  <div class="top-nav">
+    <button class="back-btn-custom" (click)="goBack()">
+      <span class="arrow">←</span>
+      Back
+    </button>
+  </div>
+
+  <div class="form-card">
+    <header class="form-header">
+      <h2>Post a New Opening 🚀</h2>
+      <p>Fill in the details to find your next star employee.</p>
+    </header>
+
+    <form class="job-form" [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+
+      <div class="input-group full">
+        <label>Job Title</label>
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="e.g. Senior Angular Developer"
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="input-group">
+          <label>Company Name</label>
+          <input
+            type="text"
+            formControlName="company"
+            placeholder="e.g. TechFlow Solutions"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Location</label>
+          <input
+            type="text"
+            formControlName="location"
+            placeholder="e.g. Chennai, India"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-group">
+          <label>Salary Range (LPA)</label>
+          <input
+            type="text"
+            formControlName="salary"
+            placeholder="e.g. 12-18 LPA"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Job Type</label>
+          <select formControlName="jobType">
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group full">
+        <label>Job Description</label>
+        <textarea
+          rows="4"
+          formControlName="description"
+          placeholder="Briefly describe the role and requirements..."
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="submit-btn-mass"
+        [disabled]="jobForm.invalid"
+      >
+        POST THIS JOB NOW
+      </button>
+
+    </form>
+  </div>
+</div>

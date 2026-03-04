@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="login-card">
+
+    <div class="header">
+      <h2 class="title">Welcome Back 👋</h2>
+      <p class="subtitle">
+        Login to TalentBridge and explore new opportunities
+      </p>
+    </div>
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="form"
+    >
+
+      <div class="form-group">
+        <label>Login As</label>
+        <select formControlName="role" class="auth-input">
+          <option value="user">Job Seeker</option>
+          <option value="recruiter">Recruiter</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="name@company.com"
+          class="auth-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="••••••••"
+          class="auth-input"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="submit-btn"
+      >
+        Sign In 🚀
+      </button>
+
+    </form>
+
+    <p class="footer-text">
+      Don't have an account?
+      <a routerLink="/auth/register" class="register-link">
+        Register here
+      </a>
+    </p>
+
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="filter-card">
+
+  <div class="filter-header">
+    <h3>Filters</h3>
+    <button class="btn-reset" (click)="clearFilters()">
+      Clear All
+    </button>
+  </div>
+
+  <div class="filter-group">
+    <h4>Location</h4>
+
+    <div *ngFor="let loc of locations" class="checkbox-item">
+      <input
+        type="checkbox"
+        [id]="loc"
+        (change)="onLocationChange(loc, $event)"
+      >
+      <label [for]="loc">{{ loc }}</label>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="filter-group">
+    <h4>Job Type</h4>
+
+    <div *ngFor="let type of jobTypes" class="checkbox-item">
+      <input
+        type="checkbox"
+        [id]="type"
+        (change)="onTypeChange(type, $event)"
+      >
+      <label [for]="type">{{ type }}</label>
+    </div>
+  </div>
+
+  <button
+    class="btn-apply-filter"
+    (click)="applyFilters()"
+  >
+    Apply Filters
+  </button>
+
+</div>

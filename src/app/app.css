@@ -1,0 +1,10 @@
+/* App component level-la idha podu mapla */
+.content-wrapper {
+  min-height: calc(100vh - 150px); /* 150px approx for navbar + footer */
+  display: flex;
+  flex-direction: column;
+}
+/* Dark mode support (if you need it later) */
+:host-context(.dark) .content-wrapper {
+  background-color: #111827;
+}

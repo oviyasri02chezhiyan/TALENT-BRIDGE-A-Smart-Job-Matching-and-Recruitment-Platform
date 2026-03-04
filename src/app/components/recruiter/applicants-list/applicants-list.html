@@ -1,0 +1,90 @@
+<div class="review-wrapper">
+
+  <div class="top-nav">
+    <button class="btn-back-bold" (click)="goBack()">
+      <span class="arrow">←</span>
+      Back to Dashboard
+    </button>
+  </div>
+
+  <div class="review-container">
+
+    <header class="review-header">
+      <div class="title-section">
+        <h2>Review Applicants 📑</h2>
+        <p>Shortlist or reject candidates for your active openings</p>
+      </div>
+
+      <div class="total-badge">
+        Total: {{ applicants().length }}
+      </div>
+    </header>
+
+    <div class="table-card-premium">
+      <table class="applicants-table">
+
+        <thead>
+          <tr>
+            <th>Applicant Details</th>
+            <th>Role Applied</th>
+            <th>Experience</th>
+            <th>Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (app of applicants(); track app.id) {
+            <tr class="candidate-row">
+
+              <td class="name-cell">
+                <div class="can-name">{{ app.name }}</div>
+                <div class="can-email">{{ app.email }}</div>
+              </td>
+
+              <td class="role-text">
+                {{ app.role }}
+              </td>
+
+              <td class="exp-text">
+                {{ app.experience }}
+              </td>
+
+              <td>
+                <span
+                  class="status-pill"
+                  [class.pending]="app.status === 'Pending'"
+                  [class.shortlisted]="app.status === 'Shortlisted'"
+                  [class.rejected]="app.status === 'Rejected'"
+                >
+                  {{ app.status }}
+                </span>
+              </td>
+
+              <td class="action-cell">
+                <div class="btn-group">
+                  <button
+                    class="btn-shortlist"
+                    (click)="updateStatus(app.id, 'Shortlisted')"
+                  >
+                    Shortlist
+                  </button>
+
+                  <button
+                    class="btn-reject"
+                    (click)="updateStatus(app.id, 'Rejected')"
+                  >
+                    Reject
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>

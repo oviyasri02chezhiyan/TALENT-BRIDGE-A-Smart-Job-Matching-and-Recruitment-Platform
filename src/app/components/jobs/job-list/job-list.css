@@ -1,0 +1,159 @@
+/* Layout */
+.job-page-container {
+  display: flex;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 25px;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Main Feed */
+.jobs-feed {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.feed-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  color: #0f172a;
+}
+
+.feed-header p {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* Sort Dropdown */
+.sort-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.sort-dropdown label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.sort-dropdown select {
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2563eb;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Job List */
+.job-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 2px dashed #e2e8f0;
+}
+
+.empty-state .icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px 0 5px;
+  color: #0f172a;
+}
+
+.empty-state p {
+  color: #64748b;
+}
+
+.empty-state button {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.empty-state button:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+app-job-card {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .job-page-container {
+    flex-direction: column;
+    margin: 20px auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .feed-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,50 @@
+<div class="job-page-container">
+
+  <aside class="sidebar">
+    <app-job-filter (filterChanged)="handleFilter($event)"></app-job-filter>
+  </aside>
+
+  <main class="jobs-feed">
+
+    <div class="feed-header">
+      <div>
+        <h2>Explore Opportunities 🚀</h2>
+        <p>Showing {{ jobs().length }} jobs tailored for you</p>
+      </div>
+
+      <div class="sort-dropdown">
+        <label>Sort by:</label>
+        <select (change)="handleSort($event)">
+          <option value="Newest">Newest First</option>
+          <option value="Salary: High to Low">Salary: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="job-cards-list">
+
+      @if (isLoading()) {
+        <app-loader></app-loader>
+      } @else {
+
+        @for (job of jobs(); track job.id) {
+          <app-job-card 
+            [job]="job" 
+            [isAdmin]="false">
+          </app-job-card>
+        } @empty {
+
+          <div class="empty-state">
+            <div class="icon">🔍</div>
+            <h3>No Match Found!</h3>
+            <p>Try adjusting your filters to find more jobs.</p>
+            <button (click)="resetFilters()">Clear All Filters</button>
+          </div>
+
+        }
+      }
+
+    </div>
+
+  </main>
+</div>

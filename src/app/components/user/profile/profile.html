@@ -1,0 +1,113 @@
+<div class="profile-page-wrapper">
+  <div class="main-content-container">
+    
+    <div class="header-card">
+      <div class="avatar-section">
+        <div class="profile-circle">
+          {{ userProfile().name[0] }}
+          <div class="online-status"></div>
+        </div>
+        <button class="cam-btn">📸</button>
+      </div>
+
+      <div class="info-section">
+        <h2 class="user-name">{{ userProfile().name }}</h2>
+        <div class="user-meta">
+          <span class="role-tag">{{ userProfile().role }}</span>
+          <span class="loc-tag">📍 {{ userProfile().location }}</span>
+        </div>
+      </div>
+
+      <div class="action-section">
+        <button 
+          (click)="toggleEdit()" 
+          [class.cancel-mode]="isEditing()" 
+          class="edit-btn">
+          {{ isEditing() ? 'Cancel' : 'Edit Profile' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="details-grid">
+      
+      <div class="form-card">
+        <h3 class="section-title">Personal Information</h3>
+
+        <form class="profile-form">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input 
+              type="text"
+              [(ngModel)]="userProfile().name"
+              name="name"
+              [disabled]="!isEditing()"
+              placeholder="Enter name">
+          </div>
+          
+          <div class="input-group">
+            <label>Professional Bio</label>
+            <textarea
+              [(ngModel)]="userProfile().bio"
+              name="bio"
+              [disabled]="!isEditing()"
+              rows="4">
+            </textarea>
+          </div>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              [(ngModel)]="userProfile().email"
+              name="email"
+              [disabled]="!isEditing()">
+          </div>
+
+          <button 
+            *ngIf="isEditing()" 
+            type="button"
+            (click)="saveProfile()" 
+            class="save-btn">
+            Save Changes ✅
+          </button>
+        </form>
+      </div>
+
+      <div class="sidebar-cards">
+        <div class="skills-card">
+          <h3 class="section-title">Expertise</h3>
+          <div class="skill-cloud">
+            @for (skill of userProfile().skills; track skill) {
+              <span class="skill-pill">{{ skill }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="resume-promo-card">
+          <div class="resume-icon">📄</div>
+          <h3>Resume Attach</h3>
+          <p>Upload your latest resume.</p>
+
+          <input
+            type="file"
+            #fileInput
+            (change)="onFileSelected($event)"
+            accept=".pdf,.doc,.docx"
+            style="display: none;">
+
+          <button 
+            class="upload-btn" 
+            type="button"
+            (click)="fileInput.click()">
+            Upload New PDF
+          </button>
+
+          <p *ngIf="selectedFileName()" class="file-name">
+            Selected: {{ selectedFileName() }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

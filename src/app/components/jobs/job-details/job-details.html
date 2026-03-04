@@ -1,0 +1,85 @@
+<div class="details-page-wrapper">
+  <div class="details-container">
+
+    <div class="back-navigation">
+      <button class="btn-back-link" routerLink="/jobs">
+        <span>←</span> Back to Listings
+      </button>
+    </div>
+
+    @if (job()) {
+
+      <div class="job-header-card">
+        <div class="header-main">
+          <h1 class="job-title-gradient">{{ job().title }}</h1>
+          <p class="company-brand">{{ job().company }}</p>
+
+          <div class="meta-info-tags">
+            <span class="info-tag">📍 {{ job().location }}</span>
+            <span class="info-tag type">💼 {{ job().type }}</span>
+            <span class="info-tag salary">💰 {{ job().salary }}</span>
+          </div>
+
+          <p class="timestamp">Posted {{ job().postedDate }}</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn-primary-apply" (click)="applyNow()">
+            🚀 Apply Now
+          </button>
+          <button class="btn-secondary-save">
+            💾 Save Job
+          </button>
+        </div>
+      </div>
+
+      <div class="details-grid">
+
+        <div class="content-left">
+
+          <section class="info-card">
+            <h3>📄 Job Description</h3>
+            <p class="description">
+              {{ job().description }}
+            </p>
+          </section>
+
+          <section class="info-card">
+            <h3>✅ Requirements</h3>
+            <ul class="styled-list">
+              @for (req of job().requirements; track req) {
+                <li>{{ req }}</li>
+              }
+            </ul>
+          </section>
+
+        </div>
+
+        <div class="content-right">
+
+          <section class="info-card benefits-highlight">
+            <h3>🎁 Benefits</h3>
+            <ul class="styled-list">
+              @for (benefit of job().benefits; track benefit) {
+                <li>{{ benefit }}</li>
+              }
+            </ul>
+          </section>
+
+        </div>
+
+      </div>
+
+    } @else {
+
+      <div class="not-found-state">
+        <h2>Job Not Found! 🔍</h2>
+        <button class="btn-back-link" routerLink="/jobs">
+          Return to Search
+        </button>
+      </div>
+
+    }
+
+  </div>
+</div>

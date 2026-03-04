@@ -1,0 +1,82 @@
+<div class="dashboard-wrapper">
+  <div class="db-container">
+    
+    <header class="db-header">
+      <div class="header-text">
+        <h1>Recruiter Dashboard 🏢</h1>
+        <p>Welcome back! Here's your hiring overview.</p>
+      </div>
+      <button class="back-btn" (click)="goBack()">← Go Back</button>
+    </header>
+
+    <section class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-icon">💼</div>
+        <div class="stat-info">
+          <h3>Total Jobs</h3>
+          <p>{{ totalJobs() }}</p>
+        </div>
+      </div>
+
+      <div class="stat-card green">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <h3>Applicants</h3>
+          <p>{{ totalApplicants() }}</p>
+        </div>
+      </div>
+
+      <div class="stat-card orange">
+        <div class="stat-icon">⌛</div>
+        <div class="stat-info">
+          <h3>Pending</h3>
+          <p>{{ pendingReviews() }}</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      
+      <aside class="actions-card">
+        <h2>Quick Actions ⚡</h2>
+        <div class="action-list">
+          <button class="btn-primary" routerLink="/recruiter/post-job">
+            Post New Job <span>+</span>
+          </button>
+          <button class="btn-secondary" routerLink="/recruiter/manage-jobs">
+            Manage Jobs <span>📂</span>
+          </button>
+          <button class="btn-secondary" routerLink="/recruiter/applicants-list">
+            View All <span>👥</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="applicants-card">
+        <div class="card-header">
+          <h2>Recent Applications 📑</h2>
+          <span class="badge">Latest</span>
+        </div>
+        
+        <div class="app-list">
+          <div 
+            class="app-item"
+            *ngFor="let app of recentApplicants()">
+
+            <div class="avatar">
+              {{ app.name[0] }}
+            </div>
+
+            <div class="details">
+              <h4>{{ app.name }}</h4>
+              <p>{{ app.role }} • {{ app.time }}</p>
+            </div>
+
+            <button class="review-btn">Review</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
